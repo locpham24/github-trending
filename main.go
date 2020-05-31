@@ -1,9 +1,13 @@
 package main
 
 import (
-	"fmt"
+	"github.com/labstack/echo"
+	"github.com/locpham24/github-trending/handler"
 )
 
 func main() {
-	fmt.Println("init project")
+	e := echo.New()
+
+	handler.InitRouter(e)
+	e.Logger.Fatal(e.Start(":7000"))
 }
