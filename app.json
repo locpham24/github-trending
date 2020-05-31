@@ -1,0 +1,12 @@
+{
+  "name": "Start on Heroku: Go",
+  "description": "Go Getting Started Example App",
+  "keywords": [
+    "getting-started",
+    "go",
+    "sample",
+    "example"
+  ],
+  "website": "https://github.com/locpham24/github-trending",
+  "repository": "https://github.com/locpham24/github-trending"
+}
