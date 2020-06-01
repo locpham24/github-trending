@@ -14,7 +14,7 @@ type Sql struct {
 }
 
 func (s *Sql) Connect() {
-	s.DB = sqlx.MustConnect("postgres", os.Getenv("DATABASE_URL"))
+	s.DB = sqlx.MustConnect("postgres", os.Getenv("DB_URI"))
 
 	if err := s.DB.Ping(); err != nil {
 		log.Error(err.Error())
