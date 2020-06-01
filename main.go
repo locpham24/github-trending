@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/gommon/log"
 	"github.com/locpham24/github-trending/db"
 	"github.com/locpham24/github-trending/handler"
+	"github.com/locpham24/github-trending/helper"
 	repo "github.com/locpham24/github-trending/repository"
 	"github.com/locpham24/github-trending/repository/repo_impl"
 	"os"
@@ -33,11 +34,15 @@ func main() {
 	e.Use(middleware.AddTrailingSlash())
 
 	userRepoImpl := repo_impl.NewUserRepo(DB)
+	githubRepoImpl := repo_impl.NewGithubRepo(DB)
 
 	repoImpl := repo.Repos{
-		UserRepo: &userRepoImpl,
+		UserRepo:   &userRepoImpl,
+		GithubRepo: &githubRepoImpl,
 	}
 	handler.InitRouter(e, &repoImpl)
+
+	helper.CrawlRepo(githubRepoImpl)
 
 	e.Logger.Fatal(e.Start(":" + port))
 }

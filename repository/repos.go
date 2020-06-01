@@ -1,5 +1,6 @@
 package repository
 
 type Repos struct {
-	UserRepo *UserRepo
+	UserRepo   *UserRepo
+	GithubRepo *GithubRepo
 }
