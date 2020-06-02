@@ -16,4 +16,10 @@ func InitRouter(e *echo.Echo, repo *repo.Repos) {
 		UserRepo: *repo.UserRepo,
 	}
 	userService.inject()
+
+	repoService := GithubHandler{
+		Engine:     e,
+		GithubRepo: *repo.GithubRepo,
+	}
+	repoService.inject()
 }
